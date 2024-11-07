@@ -10,7 +10,7 @@ export async function POST(req: Request) {
 
     if (!imgs || !title || !description || !price) {
       return NextResponse.json({
-        message: "Iltimos barcha bo'limlarni to'ldiring",
+        message: "Iltimos barcha bolimlarni toldiring",
       });
     }
 
@@ -21,7 +21,7 @@ export async function POST(req: Request) {
       price,
     });
 
-    return NextResponse.json({ message: "Mahsulod ro'yxatga qo'shildi" });
+    return NextResponse.json({ message: "Mahsulod royxatga qoshildi" });
   } catch (error) {
     NextResponse.json({ message: "Server Error", error });
   }

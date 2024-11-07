@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import axios from "axios";
+import Image from "next/image";
 import React, { ChangeEvent, useRef, useState } from "react";
 
 export default function Admin() {
@@ -70,11 +71,13 @@ export default function Admin() {
         <div className="flex items-center gap-3 mt-3">
           {imgUrls.length
             ? imgUrls.map((item, index) => (
-                <img
+                <Image
                   src={item}
                   alt="img"
                   key={index}
-                  className="w-[70px] h-[70px] rounded-md object-cover"
+                  className="rounded-md object-cover"
+                  width={70}
+                  height={70}
                 />
               ))
             : null}

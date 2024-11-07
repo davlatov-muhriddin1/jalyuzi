@@ -28,7 +28,7 @@ export default function Home() {
 
   useEffect(() => {
     getAllProduct();
-  }, [products]);
+  }, []);
 
   return (
     <div className="p-10">

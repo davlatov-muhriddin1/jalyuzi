@@ -1,8 +1,8 @@
 import { Product } from "@/types";
-import React from "react";
 import { Card, CardContent, CardDescription, CardTitle } from "./ui/card";
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
 import { Button } from "./ui/button";
+import Image from "next/image";
 
 export default function ProductItem({
   _id,
@@ -19,11 +19,9 @@ export default function ProductItem({
           <CarouselContent>
             {imgs.map((img, index) => (
               <CarouselItem key={index}>
-                <img
-                  src={img}
-                  alt="image"
-                  className="h-full rounded-md object-cover"
-                />
+                <div className="relative w-[450px] h-[250px]">
+                  <Image src={img} alt="image" fill className="object-cover" />
+                </div>
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -45,7 +43,7 @@ export default function ProductItem({
                 getProductDetail ? getProductDetail(_id) : undefined
               }
             >
-              Ko'proq Malumot Olish
+              Ko&apos;proq Malumot Olish
             </Button>
           </div>
         </div>

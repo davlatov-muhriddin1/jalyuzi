@@ -27,7 +27,7 @@ export async function DELETE(req: Request, route: { params: { id: string } }) {
 
     await Product.findByIdAndDelete(route.params.id);
 
-    return NextResponse.json({ message: "Mahsulot o'chirildi" });
+    return NextResponse.json({ message: "Mahsulot ochirildi" });
   } catch (error) {
     NextResponse.json({ message: "Server Error", error });
   }

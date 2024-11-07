@@ -1,11 +1,10 @@
-import { Copy } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Product } from "@/types";
 import { Dispatch, SetStateAction } from "react";
-import { Card, CardContent, CardDescription, CardTitle } from "./ui/card";
+import { CardDescription, CardTitle } from "./ui/card";
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
+import Image from "next/image";
 
 interface ProductDialogProps {
   productDetail?: Product;
@@ -25,11 +24,9 @@ export default function ProductDialog({
           <CarouselContent>
             {productDetail?.imgs.map((img, index) => (
               <CarouselItem key={index}>
-                <img
-                  src={img}
-                  alt="image"
-                  className="w-full h-full rounded-md object-cover"
-                />
+                <div className="relative w-[100%] h-[500px]">
+                  <Image src={img} alt="image" fill className="object-cover" />
+                </div>
               </CarouselItem>
             ))}
           </CarouselContent>
