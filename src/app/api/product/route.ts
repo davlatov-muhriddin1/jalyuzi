@@ -21,13 +21,16 @@ export async function POST(req: Request) {
       price,
     });
 
-    return NextResponse.json({ message: "Mahsulod royxatga qoshildi" });
+    return NextResponse.json({
+      message: "Mahsulod royxatga qoshildi",
+      product: newProduct,
+    });
   } catch (error) {
     NextResponse.json({ message: "Server Error", error });
   }
 }
 
-export async function GET(req: Request) {
+export async function GET() {
   try {
     await dbConnect();
 

@@ -35,7 +35,7 @@ export default function Admin() {
     }
 
     try {
-      const { data } = await axios.post("/api/product", {
+      await axios.post("/api/product", {
         imgs: imgUrls,
         title,
         description,
