@@ -71,14 +71,15 @@ export default function Admin() {
         <div className="flex items-center gap-3 mt-3">
           {imgUrls.length
             ? imgUrls.map((item, index) => (
-                <Image
-                  src={item}
-                  alt="img"
-                  key={index}
-                  className="rounded-md object-cover"
-                  width={70}
-                  height={70}
-                />
+                <div className="relative w-[70px] h-[70px] rounded-md">
+                  <Image
+                    src={item}
+                    alt="img"
+                    key={index}
+                    className="rounded-md object-cover"
+                    fill
+                  />
+                </div>
               ))
             : null}
         </div>
