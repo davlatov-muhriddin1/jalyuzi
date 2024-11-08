@@ -15,11 +15,11 @@ export default function ProductItem({
   return (
     <Card className="max-w-[450px] w-[450px] overflow-hidden p-4">
       <CardContent className="w-full p-0">
-        <Carousel className="w-full h-[250px] rounded-md overflow-hidden">
+        <Carousel className="w-full h-[150px] sm:w-full sm:h-[250px] rounded-md overflow-hidden">
           <CarouselContent>
             {imgs.map((img, index) => (
               <CarouselItem key={index}>
-                <div className="relative w-[450px] h-[250px]">
+                <div className="relative w-full h-[150px] sm:w-full sm:h-[250px]">
                   <Image src={img} alt="image" fill className="object-cover" />
                 </div>
               </CarouselItem>
@@ -33,12 +33,15 @@ export default function ProductItem({
           <CardDescription className="text-xl">
             {description.slice(0, 50)}...
           </CardDescription>
-          <div className="flex items-center gap-3">
-            <a href="https://t.me/Muhriddin_Davlatov">
-              <Button className="mt-3">Buyurtma Berish</Button>
+          <div className="flex items-center gap-1 sm:gap-3 flex-col sm:flex-row">
+            <a
+              href="https://t.me/Muhriddin_Davlatov"
+              className="w-full sm:w-auto"
+            >
+              <Button className="mt-3 w-full sm:w-auto">Buyurtma Berish</Button>
             </a>
             <Button
-              className="mt-3"
+              className="mt-3 w-full sm:w-auto"
               onClick={() =>
                 getProductDetail ? getProductDetail(_id) : undefined
               }
