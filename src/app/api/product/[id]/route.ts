@@ -8,11 +8,13 @@ export async function GET(
 ) {
   try {
     await dbConnect();
-
     const singleProduct = await Product.findById(params.id);
 
     if (!singleProduct) {
-      return NextResponse.json({ message: "Mahsulot topilmadi" });
+      return NextResponse.json(
+        { message: "Mahsulot topilmadi" },
+        { status: 404 }
+      );
     }
 
     return NextResponse.json({
@@ -20,6 +22,9 @@ export async function GET(
       product: singleProduct,
     });
   } catch (error) {
-    return NextResponse.json({ message: "Server Error", error });
+    return NextResponse.json(
+      { message: "Server xatosi", error },
+      { status: 500 }
+    );
   }
 }
