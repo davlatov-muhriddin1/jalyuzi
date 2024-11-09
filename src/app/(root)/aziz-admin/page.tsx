@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import axios from "axios";
 import Image from "next/image";
 import React, { ChangeEvent, useRef, useState } from "react";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from "@/lib/firebase";
 
 export default function Admin() {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -16,13 +18,26 @@ export default function Admin() {
 
   // upload image in pinata
   const fileImageUpload = async (e: ChangeEvent<HTMLInputElement>) => {
-    const fileData = new FormData();
-    fileData.set("images", e.target.files?.[0] as File);
+    const file = e.target.files?.[0];
 
-    setIsLoading(true);
-    const { data } = await axios.post("/api/productimgs", fileData);
-    setImgUrls((prev) => [...prev, data]);
-    setIsLoading(false);
+    if (!file) return;
+
+    const storageRef = ref(storage, `images/${file.name}-${Date.now()}`);
+
+    try {
+      setIsLoading(true);
+      const snapshot = await uploadBytes(storageRef, file);
+      console.log("File upload successfully");
+
+      const url = await getDownloadURL(snapshot.ref);
+      console.log("Download URL:", url);
+
+      setImgUrls((prev) => [...prev, url]);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
   };
 
   // upload product in mongodb
@@ -71,11 +86,13 @@ export default function Admin() {
         <div className="flex items-center gap-3 mt-3">
           {imgUrls.length
             ? imgUrls.map((item, index) => (
-                <div className="relative w-[70px] h-[70px] rounded-md">
+                <div
+                  className="relative w-[70px] h-[70px] rounded-md"
+                  key={index}
+                >
                   <Image
                     src={item}
                     alt="img"
-                    key={index}
                     className="rounded-md object-cover"
                     fill
                   />
