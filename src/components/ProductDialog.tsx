@@ -19,7 +19,7 @@ export default function ProductDialog({
 }: ProductDialogProps) {
   return (
     <Dialog open={isOpen} onOpenChange={(open) => setIsOpen(open)}>
-      <DialogContent className="w-[70vw] max-w-[70vw] h-[90vh] overflow-auto">
+      <DialogContent className="w-[70vw] max-w-[70vw] h-[90vh]  overflow-auto custom-scrollbar">
         <Carousel className="w-[100%] h-[500px] rounded-md overflow-hidden">
           <CarouselContent>
             {productDetail?.imgs.map((img, index) => (

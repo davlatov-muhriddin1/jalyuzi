@@ -67,7 +67,7 @@ export default function Admin() {
   };
 
   return (
-    <div className="p-20">
+    <div className="p-2 sm:p-20">
       {/* file input */}
       <div>
         <input
@@ -115,7 +115,7 @@ export default function Admin() {
           <input
             type="text"
             id="title"
-            className="w-[400px] outline-none border border-gray-700 px-2 py-1 rounded-md text-xl"
+            className="w-[400px] max-w-[100%] outline-none border border-gray-700 px-2 py-1 rounded-md text-xl"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
@@ -132,7 +132,7 @@ export default function Admin() {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             id="description"
-            className="w-[400px] resize-none h-[150px] outline-none border border-gray-700 px-2 py-1 rounded-md text-xl"
+            className="w-[400px] max-w-[100%] resize-none h-[150px] outline-none border border-gray-700 px-2 py-1 rounded-md text-xl"
           ></textarea>
         </div>
 
@@ -146,7 +146,7 @@ export default function Admin() {
           <input
             type="number"
             id="price"
-            className="w-[400px] outline-none border border-gray-700 px-2 py-1 rounded-md text-xl"
+            className="w-[400px] max-w-[100%] outline-none border border-gray-700 px-2 py-1 rounded-md text-xl"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           />

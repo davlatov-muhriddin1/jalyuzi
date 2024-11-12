@@ -28,3 +28,23 @@ export async function GET(
     );
   }
 }
+
+export async function DELETE(
+  req: Request,
+  { params }: { params: { id: string } }
+) {
+  await dbConnect();
+
+  try {
+    await Product.findByIdAndDelete(params.id);
+
+    return NextResponse.json({
+      message: "Mahsulot O'chirildi",
+    });
+  } catch (error) {
+    return NextResponse.json(
+      { message: "Server xatosi", error },
+      { status: 500 }
+    );
+  }
+}
