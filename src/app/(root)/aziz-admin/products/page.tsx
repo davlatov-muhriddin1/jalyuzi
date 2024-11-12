@@ -1,5 +1,6 @@
 "use client";
 
+import Loader from "@/components/Loader";
 import { Button } from "@/components/ui/button";
 import { Product } from "@/types";
 import axios from "axios";
@@ -64,7 +65,9 @@ export default function Products() {
           </div>
         ))
       ) : (
-        <h1>Not Found</h1>
+        <div className="flex justify-center">
+          <Loader />
+        </div>
       )}
     </div>
   );

@@ -6,12 +6,26 @@ export default function Navbar() {
     <nav className="py-4 border-b shadow-md">
       <ul className="flex items-center gap-4 justify-center">
         <li>
-          <Link href={"/aziz-admin/create"} className="text-xl">
+          <Link
+            href={"/"}
+            className="text-xl bg-gray-500 py-2 px-4 rounded-md text-white"
+          >
+            Bosh Sahifa
+          </Link>
+        </li>
+        <li>
+          <Link
+            href={"/aziz-admin/create"}
+            className="text-xl bg-gray-500 py-2 px-4 rounded-md text-white"
+          >
             Mahsulot Qo'shish
           </Link>
         </li>
         <li>
-          <Link href={"/aziz-admin/products"} className="text-xl">
+          <Link
+            href={"/aziz-admin/products"}
+            className="text-xl bg-gray-500 py-2 px-4 rounded-md text-white"
+          >
             Mahsulotlar Ro'yxati
           </Link>
         </li>

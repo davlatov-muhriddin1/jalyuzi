@@ -1,7 +1,9 @@
 "use client";
 
+import Loader from "@/components/Loader";
 import ProductDialog from "@/components/ProductDialog";
 import ProductItem from "@/components/ProductItem";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Product } from "@/types";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -42,7 +44,7 @@ export default function Home() {
             />
           ))
         ) : (
-          <h2>Mahsulotlar Mavjud Emas!</h2>
+          <Loader />
         )}
       </div>
       <ProductDialog
