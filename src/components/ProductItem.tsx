@@ -1,8 +1,10 @@
-import { Product } from "@/types";
-import { Card, CardContent, CardDescription, CardTitle } from "./ui/card";
-import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
-import { Button } from "./ui/button";
+"use client";
+
+import { ProductType } from "@/types";
 import Image from "next/image";
+import { Button } from "./ui/button";
+import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
+import { useRouter } from "next/navigation";
 
 export default function ProductItem({
   _id,
@@ -10,47 +12,61 @@ export default function ProductItem({
   title,
   description,
   price,
+  category,
   getProductDetail,
-}: Product) {
+}: ProductType) {
+  const router = useRouter();
+
   return (
-    <Card className="max-w-[450px] w-[450px] overflow-hidden p-4">
-      <CardContent className="w-full p-0">
-        <Carousel className="w-full h-[150px] sm:w-full sm:h-[250px] rounded-md overflow-hidden">
+    <div>
+      <div className="w-full max-w-xs bg-white rounded-lg shadow-md overflow-hidden">
+        {/* Rasm */}
+
+        <Carousel className="w-full max-w-xs">
           <CarouselContent>
             {imgs.map((img, index) => (
               <CarouselItem key={index}>
-                <div className="relative w-full h-[150px] sm:w-full sm:h-[250px]">
-                  <Image src={img} alt="image" fill className="object-cover" />
+                <div className="relative h-48">
+                  <Image
+                    src={img}
+                    alt={title}
+                    layout="fill"
+                    objectFit="cover"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </CarouselItem>
             ))}
           </CarouselContent>
         </Carousel>
 
-        <div className="mt-2">
-          <CardTitle className="text-2xl">{title}</CardTitle>
-          <CardTitle className="text-xl my-2">${price}</CardTitle>
-          <CardDescription className="text-xl">
-            {description.slice(0, 50)}...
-          </CardDescription>
-          <div className="flex items-center gap-1 sm:gap-3 flex-col sm:flex-row">
-            <a
-              href="https://t.me/Muhriddin_Davlatov"
-              className="w-full sm:w-auto"
-            >
-              <Button className="mt-3 w-full sm:w-auto">Buyurtma Berish</Button>
-            </a>
-            <Button
-              className="mt-3 w-full sm:w-auto"
-              onClick={() =>
-                getProductDetail ? getProductDetail(_id) : undefined
-              }
-            >
-              Ko&apos;proq Malumot Olish
+        {/* Cardning kontenti */}
+        <div className="p-4">
+          {/* Mahsulot nomi */}
+          <h3 className="text-xl font-semibold mb-2 text-gray-800">{title}</h3>
+
+          {/* Mahsulot descriptioni */}
+          <p className="text-gray-600 text-sm mb-2">
+            {description.slice(0, 40)}...
+          </p>
+
+          {/* Kategoriya */}
+          <span className="inline-block bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded">
+            {category}
+          </span>
+
+          {/* Narx */}
+          <p className="text-lg font-semibold text-green-600 mt-2">${price}</p>
+
+          {/* Tugmalar */}
+          <div className="flex flex-col md:flex-row mt-4 gap-3">
+            <Button onClick={() => router.push(`/product-detail/${_id}`)}>
+              To'liq malumot olish
             </Button>
+            <Button>Buyurtma Berish</Button>
           </div>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

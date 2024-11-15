@@ -1,17 +1,14 @@
 "use client";
 
+import Categories from "@/components/Categories";
 import Loader from "@/components/Loader";
-import ProductDialog from "@/components/ProductDialog";
 import ProductItem from "@/components/ProductItem";
-import { Skeleton } from "@/components/ui/skeleton";
-import { Product } from "@/types";
+import { ProductType } from "@/types";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [productDetail, setProdcutDetail] = useState<Product>();
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [products, setProducts] = useState<ProductType[]>([]);
 
   const getAllProduct = async () => {
     try {
@@ -22,10 +19,13 @@ export default function Home() {
     }
   };
 
-  const getProductDetail = async (id: string) => {
-    setIsOpen(true);
-    const { data } = await axios.get(`/api/product/${id}`);
-    setProdcutDetail(data.product);
+  const getCategoryProduct = async (categoryName: string) => {
+    try {
+      const { data } = await axios.get(`/api/category/${categoryName}`);
+      setProducts(data.products);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -34,24 +34,16 @@ export default function Home() {
 
   return (
     <div className="p-10">
-      <div className="flex justify-center flex-wrap gap-5">
+      <Categories getCategoryProduct={getCategoryProduct} />
+      <div className="flex flex-wrap justify-center mt-10 gap-5">
         {products.length ? (
           products.map((product) => (
-            <ProductItem
-              key={product._id}
-              {...product}
-              getProductDetail={getProductDetail}
-            />
+            <ProductItem key={product._id} {...product} />
           ))
         ) : (
           <Loader />
         )}
       </div>
-      <ProductDialog
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        productDetail={productDetail}
-      />
     </div>
   );
 }

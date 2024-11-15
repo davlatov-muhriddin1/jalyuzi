@@ -2,13 +2,13 @@
 
 import Loader from "@/components/Loader";
 import { Button } from "@/components/ui/button";
-import { Product } from "@/types";
+import { ProductType } from "@/types";
 import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Products() {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<ProductType[]>([]);
 
   const getAllProduct = async () => {
     try {

@@ -6,9 +6,9 @@ export async function POST(req: Request) {
   try {
     await dbConnect();
 
-    const { imgs, title, description, price } = await req.json();
+    const { imgs, title, description, price, category } = await req.json();
 
-    if (!imgs || !title || !description || !price) {
+    if (!imgs || !title || !description || !price || !category) {
       return NextResponse.json({
         message: "Iltimos barcha bolimlarni toldiring",
       });
@@ -19,6 +19,7 @@ export async function POST(req: Request) {
       title,
       description,
       price,
+      category,
     });
 
     return NextResponse.json({
