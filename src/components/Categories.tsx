@@ -25,7 +25,7 @@ export default function Categories({ getCategoryProduct }: CategoriesProps) {
 
   return (
     <div>
-      <ul className="flex items-center justify-center gap-5">
+      <ul className="flex flex-wrap items-center justify-center gap-5">
         {categories
           ? categories.map((item) => (
               <li key={item._id}>

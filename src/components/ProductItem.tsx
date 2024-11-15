@@ -19,10 +19,10 @@ export default function ProductItem({
 
   return (
     <div>
-      <div className="w-full max-w-xs bg-white rounded-lg shadow-md overflow-hidden">
+      <div className="w-full sm:w-[350px] rounded-lg shadow-md overflow-hidden">
         {/* Rasm */}
 
-        <Carousel className="w-full max-w-xs">
+        <Carousel className="w-full">
           <CarouselContent>
             {imgs.map((img, index) => (
               <CarouselItem key={index}>

@@ -22,7 +22,7 @@ export default function CreateCategory() {
       const { data } = await axios.post("/api/category", {
         title: title.toLowerCase(),
       });
-      console.log(data);
+      setTitle("");
     } catch (error) {
       console.log(error);
     }

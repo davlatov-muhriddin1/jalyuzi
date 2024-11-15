@@ -8,25 +8,34 @@ export default function Navbar() {
         <li>
           <Link
             href={"/"}
-            className="text-xl bg-gray-500 py-2 px-4 rounded-md text-white"
+            className="text-xl bg-black py-2 px-4 rounded-md text-white"
           >
-            Bosh Sahifa
+            Home
           </Link>
         </li>
         <li>
           <Link
             href={"/aziz-admin/create"}
-            className="text-xl bg-gray-500 py-2 px-4 rounded-md text-white"
+            className="text-xl bg-black py-2 px-4 rounded-md text-white"
           >
-            Mahsulot Qo'shish
+            Add
           </Link>
         </li>
         <li>
           <Link
             href={"/aziz-admin/products"}
-            className="text-xl bg-gray-500 py-2 px-4 rounded-md text-white"
+            className="text-xl bg-black py-2 px-4 rounded-md text-white"
           >
-            Mahsulotlar Ro'yxati
+            Products
+          </Link>
+        </li>
+
+        <li>
+          <Link
+            href={"/aziz-admin/categories"}
+            className="text-xl bg-black py-2 px-4 rounded-md text-white"
+          >
+            Categories
           </Link>
         </li>
       </ul>
